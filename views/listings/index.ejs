@@ -1,0 +1,276 @@
+<% layout("/layouts/boilerplate.ejs") %>
+
+    <body>
+        <h3 style="color: black;">ALL Listings</h3>
+        
+        <style>
+            
+            #filters {
+                position: sticky;
+                top: 75px; 
+                z-index: 1000;
+                background-color: white;
+                padding: 10px 0;
+                width: 100%;
+            }
+            .filter i {
+                color: black;
+                transition: 0.2s;
+            }
+
+            .filter:hover i {
+                color: #fe424d;
+            }
+
+            .filter {
+                text-align: center;
+                opacity: 0.7;
+                white-space: nowrap;
+                flex-shrink: 0;
+                text-decoration: none;
+                color:black;
+            }
+
+            .filter:hover {
+                opacity: 1;
+                cursor: pointer;
+                text-decoration: none;
+                color: black;
+            }
+
+            .filter p {
+                font-size: 0.8rem;
+                margin-bottom: 0;
+                color: #717171;
+            }
+
+            .tax-info {
+                display: none;
+            }
+
+            .tax-toogle {
+                border: 1px solid black;
+                border-radius: 1rem;
+                min-height: 3.5rem;
+                padding: 1rem;
+                display: flex;
+                align-items: center;
+                white-space: nowrap;
+            }
+
+            /* Mobile */
+            @media (max-width: 991px) {
+                .tax-toogle {
+                    margin: 0 auto;
+                }
+            }
+
+        </style>
+
+        
+        <div id="filters" class="d-flex flex-column flex-lg-row 
+            justify-content-between align-items-lg-center gap-3 ">
+
+            <!-- Categories -->
+            <div class="d-flex flex-nowrap overflow-auto gap-4 
+                flex-grow-1">
+
+                <div class="filter flex-shrink-0 text-center">
+                    <a href="/listing/search?category=Trending" class="filter">
+
+                        <i class="fa-solid fa-fire"></i>
+                        <p>Trending</p>
+                    </a>
+                </div>
+
+                <div class="filter flex-shrink-0 text-center">
+                    <a href="/listing/search?category=Apartments" class="filter">
+
+                        <i class="fa-solid fa-building"></i>
+                        <p>Apartments</p>
+                    </a>
+                </div>
+
+                <div class="filter flex-shrink-0 text-center">
+                    <a href="/listing/search?category=Houses" class="filter">
+
+                        <i class="fa-solid fa-house"></i>
+                        <p>Houses</p>
+                    </a>
+                </div>
+
+                <div class="filter flex-shrink-0 text-center">
+                    <a href="/listing/search?category=Mountains" class="filter">
+
+                        <i class="fa-solid fa-mountain"></i>
+                        <p>Mountains</p>
+                    </a>
+                </div>
+
+                <div class="filter flex-shrink-0 text-center">
+                    <a href="/listing/search?category=Beachfront" class="filter">
+
+                        <i class="fa-solid fa-umbrella-beach"></i>
+                        <p>Beachfront</p>
+                    </a>
+                </div>
+
+                <div class="filter flex-shrink-0 text-center">
+                    <a href="/listing/search?category=Tropical" class="filter">
+
+                        <i class="fa-solid fa-tree"></i>
+                        <p>Tropical</p>
+                    </a>
+                </div>
+
+                <div class="filter flex-shrink-0 text-center">
+                    <a href="/listing/search?category=Castles" class="filter">
+
+                        <i class="fa-solid fa-chess-rook"></i>
+                        <p>Castles</p>
+                    </a>
+                </div>
+
+                <div class="filter flex-shrink-0 text-center">
+                    <a href="/listing/search?category=Camping" class="filter">
+
+                        <i class="fa-solid fa-campground"></i>
+                        <p>Camping</p>
+                    </a>
+                </div>
+
+                <div class="filter flex-shrink-0 text-center">
+                    <a href="/listing/search?category=Arctic" class="filter">
+
+                        <i class="fa-solid fa-snowflake"></i>
+                        <p>Arctic</p>
+                    </a>
+                </div>
+
+                <div class="filter flex-shrink-0 text-center">
+                    <a href="/listing/search?category=Amazing Pools" class="filter">
+
+                        <i class="fa-solid fa-water"></i>
+                        <p>Amazing Pools</p>
+                    </a>
+                </div>
+
+                <div class="filter flex-shrink-0 text-center">
+                    <a href="/listing/search?category=Countryside" class="filter">
+
+                        <i class="fa-solid fa-wheat-awn"></i>
+    
+                        <p>Countryside</p>
+                    </a>
+                </div>
+
+                <div class="filter flex-shrink-0 text-center">
+                    <a href="/listing/search?category=Luxury" class="filter">
+
+                        <i class="fa-solid fa-crown"></i>
+                        <p>Luxury</p>
+                    </a>
+                </div>
+
+                <div class="filter flex-shrink-0 text-center">
+                    <a href="/listing/search?category=Farm Stays" class="filter">
+
+                        <i class="fa-solid fa-tractor"></i>
+                        <p>Farm Stays</p>
+                    </a>
+                </div>
+
+                <div class="filter flex-shrink-0 text-center">
+                    <a href="/listing/search?category=Lakefront" class="filter">
+
+                        <i class="fa-solid fa-water"></i>
+                        <p>Lakefront</p>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Tax Toggle -->
+            <div class="tax-toggle flex-shrink-0 mx-auto mx-lg-0">
+                <div class="form-check-reverse form-switch">
+                    <input class="form-check-input"
+                        type="checkbox"
+                        id="flexSwitch"
+                        role="switch">
+
+                    <label class="form-check-label" for="flexSwitch">
+                        Display total after taxes
+                    </label>
+                </div>
+            </div>
+
+        </div>
+
+
+        <div class="row row-cols-lg-3 row-cols-md-2 row-cols-sm-1 mt-3">
+
+            <% for (let listing of allListings) { %>
+                <a href="/listing/<%= listing._id%> " class="listing-link">
+                    <div class="col mb-4">
+                        <div class="card h-100 listing-card">
+
+                            <img src="<%= listing.image.url %>" class="card-img-top" alt="<%= listing.title %>">
+                            <div class="card-img-overlay"></div>
+                            <div class="card-body">
+                                <p class="card-text">
+                                    <b>
+                                        <%= listing.title %>
+                                    </b>
+                                    <br>
+                                    <% let gstAmount = (listing.price * 18) / 100; %>
+                                        <% let totalPrice = listing.price + gstAmount; %>
+
+                                        <span class="original-price">
+                                            &#8377; <%= listing.price.toLocaleString("en-IN") %>
+                                        </span>
+
+                                        <span class="gst-price" style="display: none;">
+                                            &#8377; <%= totalPrice.toLocaleString("en-IN") %>
+                                        </span>
+
+                                        <span class="price-label"> / night</span>
+
+                                        <i class="tax-info" style="display: none;">
+                                            &nbsp; +18% GST included
+                                        </i>                               
+                                </p>
+                            </div>
+
+                        </div>
+                    </div>
+                </a>
+
+
+                <% } %>
+
+        </div>
+        <script>
+                let taxSwitch = document.getElementById("flexSwitch");
+
+                taxSwitch.addEventListener("change", () => {
+                    let originalPrices = document.querySelectorAll(".original-price");
+                    let gstPrices = document.querySelectorAll(".gst-price");
+                    let taxInfo = document.querySelectorAll(".tax-info");
+
+                    originalPrices.forEach(price => {
+                        price.style.display = taxSwitch.checked ? "none" : "inline";
+                    });
+
+                    gstPrices.forEach(price => {
+                        price.style.display = taxSwitch.checked ? "inline" : "none";
+                    });
+
+                    taxInfo.forEach(info => {
+                        info.style.display = taxSwitch.checked ? "inline" : "none";
+                    });
+                });
+            
+        </script>
+
+    </body>
+
+    </html>

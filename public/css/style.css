@@ -1,0 +1,129 @@
+body{
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    margin: 0;
+    padding-top: 5rem;
+     box-sizing: border-box;
+}
+.navbar {
+    min-height: 70px;
+    height: 5rem;
+    background-color: #ebebeb;
+    display: flex;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+}
+.navbar-collapse {
+    background-color: white;
+}
+
+.navbar-nav .nav-link {
+    padding: 10px 15px;
+}
+.navbar-brand {
+    margin-right: 1rem;
+}
+
+.navbar-nav {
+    display: flex;
+    flex-direction: row;
+    gap: 1rem;
+}
+.fa-compass{
+    color:red;
+    font-size: 2rem;
+}
+.f-info-links a{
+    text-decoration: none;
+    color:#222222;
+}
+.f-info-links a:hover{
+    text-decoration: underline;
+}
+.f-info-links , .f-info-socials, .f-info-brand{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.f-info-socials i{
+    margin-right:1rem;
+    font-size: 1.2rem;
+}
+.f-info{
+    text-align: center;
+    height: 8rem;
+    background-color: #ebebeb;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: space-evenly;
+
+}
+
+/* cards */
+.listing-card {
+    border:none !important;
+    margin-bottom: 2rem;
+
+}
+.card-img-top{
+    margin-top: 1.5rem;
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
+    border-radius: 1rem !important;
+    display: block;
+
+}
+.card-body{
+    padding: 0 !important;
+
+}
+.card-text p{
+    font-weight: 400 !important;
+}
+.listing-link{
+    text-decoration: none;
+}
+/*card effect*/
+.card-img-overlay{
+    opacity: 0;
+}
+.card-img-overlay:hover{
+    opacity: 0.2;
+    background-color: #fff;
+}
+
+
+.edit-btn {
+    background-color: red !important;
+    border: none !important;
+    color: white !important;
+}
+
+.add-btn {
+    background-color: red !important;
+    border: none !important;
+    color: white !important;
+}
+
+/* show page*/
+.show-img{
+    height: 30vh;
+}
+.btns{
+    display: flex;
+}
+
+/* map */
+#map{
+    height: 400px;
+    width: 100%;
+}
