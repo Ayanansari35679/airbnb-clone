@@ -7,7 +7,7 @@ const wrapAsync = require("../utils/wrapAsync.js");
 const ExpressError = require("../utils/ExpressError.js");
 const { reviewSchema } = require("../schema.js");
 const Review = require("../models/review.js")
-const {validateReview, isLoggedIn, isReviewAuthor} = require("../middleware.js");
+const {validateReview, isLoggedIn, isReviewAuthor} = require("../middlewares.js");
 
 const reveiwController = require("../controllers/review.js");
 

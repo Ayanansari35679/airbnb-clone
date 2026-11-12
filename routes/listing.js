@@ -7,7 +7,7 @@ const wrapAsync = require("../utils/wrapAsync.js");
 const ExpressError = require("../utils/ExpressError.js");
 const listingSchema = require("../schema.js");
 const { reviewSchema } = require("../schema.js");
-const { isLoggedIn, isOwner, validationlisting } = require("../middleware.js");
+const { isLoggedIn, isOwner, validationlisting } = require("../middlewares.js");
 const listingController =require("../controllers/listing.js");
 const  searchListing  = require('../controllers/listing.js');
 
